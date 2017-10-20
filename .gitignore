@@ -6,3 +6,4 @@ examples/labmachines
 examples/cluster_uninstall.yml
 files/*.rpm
 files/*.deb
+*.retry

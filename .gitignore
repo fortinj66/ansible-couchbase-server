@@ -7,3 +7,5 @@ examples/cluster_uninstall.yml
 files/*.rpm
 files/*.deb
 *.retry
+hosts*
+couchbase-server-enterprise-4.6.2-centos7.x86_64.rpm

@@ -17,6 +17,6 @@ lvcb-cache-04.corp.shop.com couchbase_server_node_role=additional
 
 [cluster_nodes_mds]
 lvcb-cache-01.corp.shop.com couchbase_server_node_role=primary couchbase_server_node_services="data" ansible_ssh_user=root
-lvcb-cache-01.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
-lvcb-cache-01.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
-lvcb-cache-01.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="index" ansible_ssh_user=root
+lvcb-cache-02.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
+lvcb-cache-03.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
+lvcb-cache-04.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="index" ansible_ssh_user=root

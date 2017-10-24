@@ -1,0 +1,58 @@
+---
+- hosts: cluster_nodes
+  become: yes
+  become_user: root
+  tasks:
+  - name: Enable Firewalld
+    service: 
+      name: firewalld
+      state: started
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 8091-8094/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 9100-9105/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 9998-9999/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 11207-11215/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 18091-18093/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 4369/tcp
+      permanent: true
+      state: enabled
+      immediate: true
+
+  - name: Open Firewall ports
+    firewalld:
+      port: 21100-21299/tcp
+      permanent: true
+      state: enabled
+      immediate: true

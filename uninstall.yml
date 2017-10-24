@@ -1,0 +1,22 @@
+---
+# File: cluster_init.yml
+# Example Ansible playbook to initialize a new Couchbase Server cluster
+
+- hosts: cluster_nodes
+  become: yes
+  become_user: root
+  tasks:
+  - name: Remove Couchbase
+    yum:
+      name: couchbase-server-4.6.2-3905.x86_64
+      state: absent
+
+  - name: Clean artifact path
+    file:
+      state: absent
+      path: /opt/couchbase
+
+  - name: Clean artifact path
+    file:
+      state: absent
+      path: /var/lib/couchbase/*

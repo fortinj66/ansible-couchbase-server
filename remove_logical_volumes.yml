@@ -1,0 +1,28 @@
+---
+- hosts: cluster_nodes
+  become: yes
+  become_user: root
+
+  tasks:
+  - name: Unmount Data Filesystem
+    mount:
+      name: /var/lib/couchbase
+      state: unmounted
+
+  - name: Remove Filesystem from /etc/fstab
+    mount:
+      name: /var/lib/couchbase
+      state: absent
+
+  - name: Remove Logical Volume
+    lvol:
+      vg: cb-data-vg01
+      lv: data-lv01
+      force: yes
+      state: absent
+
+  - name: Remove Volume Group
+    lvg:
+      vg: cb-data-vg01
+      pvs: /dev/sdb
+      state: absent

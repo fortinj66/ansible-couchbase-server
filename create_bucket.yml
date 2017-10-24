@@ -10,13 +10,16 @@
 
 - hosts: primary
   become: no
-  vars_files:
-    - ../defaults/main.yml
+  roles:
+  - role: couchbaselabs.couchbase-server
+    when: False
+#  vars_files:
+#    - ../defaults/main.yml
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
-    couchbase_server_bucket_name: default
+    couchbase_server_bucket_name: cache
     couchbase_server_bucket_type: couchbase
-    couchbase_server_bucket_ram: 256
+    couchbase_server_bucket_ram: 30973
     couchbase_server_bucket_port: 11211
     couchbase_server_bucket_replica: 1
   tasks:

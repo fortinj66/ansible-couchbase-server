@@ -1,0 +1,38 @@
+---
+- hosts: cluster_nodes
+  become: yes
+  become_user: root
+  tasks:
+  - name: Create Volume Group
+    lvg:
+      vg: cb-data-vg01
+      pvs: /dev/sdb
+
+  - name: Create Logical Volume
+    lvol:
+      vg: cb-data-vg01
+      lv: data-lv01
+      size: 100%FREE
+      shrink: false
+
+  - name: Create XFS filesystem
+    filesystem:
+      fstype: xfs
+      dev: /dev/cb-data-vg01/data-lv01
+      force: yes
+
+  - name: Add Filesystem to /etc/fstab
+    mount:
+      name: /var/lib/couchbase
+      src: /dev/cb-data-vg01/data-lv01
+      fstype: xfs
+      opts: rw
+      state: present
+
+  - name: Mount Filesystem
+    mount:
+      name: /var/lib/couchbase
+      src: /dev/cb-data-vg01/data-lv01
+      fstype: xfs
+      opts: rw
+      state: mounted

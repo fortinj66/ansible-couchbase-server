@@ -9,14 +9,32 @@
 # Specify Multi Dimensional Scaling (MDS) services such as 'index' and 'query'
 # as a comma separated list in the 'couchbase_server_node_services' variable
 
+#[cluster]
+#cluster_nodes
+#cluster_nodes_mds
+
 [cluster_nodes]
 lvcb-cache-01.corp.shop.com couchbase_server_node_role=primary
 lvcb-cache-02.corp.shop.com couchbase_server_node_role=additional
 lvcb-cache-03.corp.shop.com couchbase_server_node_role=additional
 lvcb-cache-04.corp.shop.com couchbase_server_node_role=additional
 
+[cluster_nodes:vars]
+couchbase_server_admin=Administrator	
+couchbase_server_password=maeagleAdmin1
+couchbase_server_ram=30989
+couchbase_index_ram=30989
+couchbase_index_storage_setting=memopt
+couchbase_server_home_path=/opt/couchbase
+couchbase_server_bin_path=/opt/couchbase/bin
+couchbase_server_data_path=/var/lib/couchbase/data
+couchbase_server_index_path=/var/lib/couchbase/data
+couchbase_server_tune_os=true
+couchbase_server_firewall=true
+couchbase_cluster_name=lvcache
+
 [cluster_nodes_mds]
 lvcb-cache-01.corp.shop.com couchbase_server_node_role=primary couchbase_server_node_services="data" ansible_ssh_user=root
 lvcb-cache-02.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
 lvcb-cache-03.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="data" ansible_ssh_user=root
-lvcb-cache-04.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="index" ansible_ssh_user=root
+lvcb-cache-04.corp.shop.com couchbase_server_node_role=additional couchbase_server_node_services="index,query" ansible_ssh_user=root

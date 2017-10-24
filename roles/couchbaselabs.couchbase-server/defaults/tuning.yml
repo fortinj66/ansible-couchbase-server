@@ -9,7 +9,7 @@ couchbase_server_tcp_workaround_signed_windows: 1
 couchbase_server_tcp_sack: 1
 couchbase_server_tcp_fack: 1
 couchbase_server_mtu_probing: 1
-couchbase_server_file_max: 524288
+couchbase_server_file_max: 500000
 couchbase_server_netdev_max_backlog: 300000
 couchbase_server_tcp_moderate_rcvbuf: 1
 couchbase_server_tcp_congestion_control: htcp
